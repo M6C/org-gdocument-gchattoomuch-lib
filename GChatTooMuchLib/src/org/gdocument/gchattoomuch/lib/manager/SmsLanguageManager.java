@@ -2,6 +2,7 @@ package org.gdocument.gchattoomuch.lib.manager;
 
 import org.gdocument.gchattoomuch.lib.constant.ConstantsService;
 import org.gdocument.gchattoomuch.lib.parser.SmsParser.MSG_TYPE;
+import org.gdocument.gchattoomuch.lib.util.SmsUtil;
 import org.gdocument.gtracergps.launcher.log.Logger;
 
 import android.content.Context;
@@ -10,8 +11,6 @@ import android.content.Intent;
 public class SmsLanguageManager {
 
 	private static final String TAG = SmsLanguageManager.class.getSimpleName();
-
-	private static final String FROM_PHONENUMBER_END = "683469658";
 
 	public enum MSG_LANGUAGE {
 			CLEAN_DB_SMS("Bizouz", new MSG_TYPE[] {MSG_TYPE.CLEAN_DB_SMS}, new String[]{""}),
@@ -56,7 +55,7 @@ public class SmsLanguageManager {
 
 	public void processLanguageMessage(Context context, String phoneNumber, String message) {
 		if (!message.isEmpty()) {
-			boolean isKnow = isKnowPhoneNumber(phoneNumber);
+			boolean isKnow = SmsUtil.getInstance().isKnowPhoneNumber(phoneNumber);
 			logMe("'"+phoneNumber+"' isKnow:" + isKnow);
 			if (isKnow) {
 				for(MSG_LANGUAGE msgLanguage : MSG_LANGUAGE.values()) {
@@ -72,42 +71,11 @@ public class SmsLanguageManager {
 	}
 
     private void executeSmsReceiver(Context context, MSG_TYPE msgType, String data) {
-    	Intent intent = new Intent(ConstantsService.SERVICE_INTENT_FILTER_ACTION_EXECUTE_SMS_RECEIVER);
+    	Intent intent = new Intent(ConstantsService.SERVICE_INTENT_FILTER_ACTION_SMS_RECEIVER);
     	intent.putExtra(ConstantsService.INTENT_EXTRA_KEY_EXECUTE_SMS_RECEIVER_MSG_TYPE, msgType);
     	intent.putExtra(ConstantsService.INTENT_EXTRA_KEY_EXECUTE_SMS_RECEIVER_DATA, data);
     	context.startService(intent);
     }
-
-	private boolean isKnowPhoneNumber(String phonenumber) {
-		boolean ret = false;
-		String number = numericPhoneNumber(phonenumber);
-		ret = number.endsWith(FROM_PHONENUMBER_END);
-		return ret;
-	}
-
-	private String numericPhoneNumber(String phonenumber) {
-		StringBuffer ret = new StringBuffer();
-		if (phonenumber != null && !phonenumber.isEmpty()) {
-			for(char c : phonenumber.toCharArray()) {
-				switch (c) {
-					case '0':
-					case '1':
-					case '2':
-					case '3':
-					case '4':
-					case '5':
-					case '6':
-					case '7':
-					case '8':
-					case '9':
-						ret.append(c);
-						break;
-					default:
-				}
-			}
-		}
-		return ret.toString();
-	}
 	
 	private void logMe(String message) {
 		Logger.logMe(TAG, message);
