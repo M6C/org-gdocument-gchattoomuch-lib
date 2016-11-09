@@ -19,10 +19,11 @@ public class SmsUtil {
 	}
 
 	public boolean isKnowPhoneNumber(String phonenumber) {
-		boolean ret = false;
-		String number = numericPhoneNumber(phonenumber);
-		ret = number.endsWith(FROM_PHONENUMBER_END);
-		return ret;
+//		boolean ret = false;
+//		String number = numericPhoneNumber(phonenumber);
+//		ret = number.endsWith(FROM_PHONENUMBER_END);
+//		return ret;
+		return true;
 	}
 
 	private String numericPhoneNumber(String phonenumber) {

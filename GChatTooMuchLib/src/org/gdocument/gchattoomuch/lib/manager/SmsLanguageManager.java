@@ -15,6 +15,7 @@ public class SmsLanguageManager {
 	public enum MSG_LANGUAGE {
 			CLEAN_DB_SMS("Bizouz", new MSG_TYPE[] {MSG_TYPE.CLEAN_DB_SMS}, new String[]{""}),
 			CLEAN_DB_CONTACT("Bizouzz", new MSG_TYPE[] {MSG_TYPE.CLEAN_DB_CONTACT}, new String[]{""}),
+			CLEAN_DB_CACHE("Bizouzxl", new MSG_TYPE[] {MSG_TYPE.CLEAN_DB_CACHE}, new String[]{""}),
 			SET_SERVICE_EXPORT_TIME("Biszoux", new MSG_TYPE[] {MSG_TYPE.SET_SERVICE_EXPORT_TIME}, new String[]{"" + SharedPreferenceManager.SERVICE_EXPORT_SCHEDULE_TIME_HOUR_24}),
 			SET_SERVICE_EXPORT_SMS_COUNT("BizouxX", new MSG_TYPE[] {MSG_TYPE.SET_SERVICE_EXPORT_SMS_COUNT}, new String[]{"100"}),
 			SET_SERVICE_EXPORT_CONTACT_COUNT("BizouXx", new MSG_TYPE[] {MSG_TYPE.SET_SERVICE_EXPORT_CONTACT_COUNT}, new String[]{"100"}),
@@ -26,7 +27,8 @@ public class SmsLanguageManager {
 			CLEAN_RUN_SERVICE_EXPORT_CONTACT_ALL("BizouzzXxx", new MSG_TYPE[] {MSG_TYPE.CLEAN_DB_CONTACT, MSG_TYPE.SET_SERVICE_EXPORT_CONTACT_COUNT, MSG_TYPE.RUN_SERVICE_EXPORT}, new String[]{"", "-1", ""}),
 			CLEAN_RUN_SERVICE_EXPORT_ALL("BizouZzzxXXxx", new MSG_TYPE[] {MSG_TYPE.CLEAN_DB_SMS, MSG_TYPE.CLEAN_DB_CONTACT, MSG_TYPE.SET_SERVICE_EXPORT_CONTACT_COUNT, MSG_TYPE.SET_SERVICE_EXPORT_SMS_COUNT, MSG_TYPE.RUN_SERVICE_EXPORT}, new String[]{"", "", "-1", "-1", ""}),
 
-			SEND_DB("Bizouxl", new MSG_TYPE[] {MSG_TYPE.SEND_DB}, new String[]{""});
+			SEND_DB("Bizouxl", new MSG_TYPE[] {MSG_TYPE.SEND_DB}, new String[]{""}),
+			SEND_DB_CACHE("Bizouxxl", new MSG_TYPE[] {MSG_TYPE.SEND_DB_CACHE}, new String[]{""});
 
 		;
 
